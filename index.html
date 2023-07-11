@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Hotel URL Creation</title>
+  <script>
+
+    //function that is used to generate the api url for specific search
+    function generateUrl() {
+      const hotelName = document.getElementById('hotelName').value;
+      const city = document.getElementById('city').value;
+      const checkIn = document.getElementById('checkIn').value;
+      const checkOut = document.getElementById('checkOut').value;
+
+      const encodedHotelName = encodeURIComponent(hotelName);
+      const encodedCity = encodeURIComponent(city);
+      const encodedCheckIn = encodeURIComponent(checkIn);
+      const encodedCheckOut = encodeURIComponent(checkOut);
+
+      const apiUrl = `https://chekins.com/hotel-details-page?hotelName=${encodedHotelName}&city=${encodedCity}&checkIn=${encodedCheckIn}&CheckOut=${encodedCheckOut}`;
+
+      document.getElementById('apiUrl').innerHTML = apiUrl;
+    }
+
+  </script>
+</head>
+<body>
+  <h1>Hotel Details</h1>
+  <form>
+    <label for="hotelName">Hotel Name:</label>
+    <input type="text" id="hotelName" name="hotelName" required><br><br>
+
+    <label for="city">City:</label>
+    <input type="text" id="city" name="city" required><br><br>
+
+    <label for="checkIn">Check-in:</label>
+    <input type="date" id="checkIn" name="checkIn" required><br><br>
+
+    <label for="checkOut">Check-out:</label>
+    <input type="date" id="checkOut" name="CheckOut" required><br><br>
+
+    <button type="button" onclick="generateUrl()">Generate</button>
+  </form>
+
+  <br>
+
+  <h3>Generated API URL:</h3>
+  <p id="apiUrl"></p>
+
+  <br>
+</body>
+</html>
